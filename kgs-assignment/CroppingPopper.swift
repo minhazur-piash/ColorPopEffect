@@ -39,7 +39,7 @@ class CroppingPopper: Popper {
             let calculatedRect = ImageUtils.getCalculatedRectBasedOn(touchPoint: actualEndPointInImage, size: brushSize)
             
             if let grayedImage = imageView.image,
-                let coloredImage = ImageUtils.getColorImageFrom(image: originalImage, rect: calculatedRect) {
+                let coloredImage = ImageUtils.croppedImage(image: originalImage, toRect: calculatedRect) {
                 
                 let mixedImage = ImageUtils.getMixedImg(image1: grayedImage, image2: coloredImage, point: calculatedRect.origin)
                 imageView.image = mixedImage

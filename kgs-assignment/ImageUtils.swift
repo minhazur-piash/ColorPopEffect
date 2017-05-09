@@ -37,22 +37,6 @@ class ImageUtils {
         return CGRect(origin: calculatedPoint, size: size)
     }
     
-    
-    /**
-     Get colored part of given image.
-     
-     - parameter image: Source image, from which color part will be taken.
-     - parameter rect: rectangular area to take from given image
-     
-     - returns: colored image cropped from given image.
-     */
-    class func getColorImageFrom(image: UIImage, rect: CGRect) -> UIImage? {
-        let croppedImage = ImageUtils.cropImage(image: image, toRect: rect)
-        
-        return croppedImage
-    }
-    
-    
     class func convertedToGrayScale(image: UIImage) -> UIImage {
         let imageRect =  CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
         let colorSpace = CGColorSpaceCreateDeviceGray()
@@ -195,7 +179,15 @@ class ImageUtils {
         return finalImage!
     }
     
-    class func cropImage(image: UIImage, toRect: CGRect) -> UIImage? {
+    /**
+     Get cropped part of given image.
+     
+     - parameter image: Source image
+     - parameter rect: rectangular area to crop from given image
+     
+     - returns: cropped image
+     */
+    class func croppedImage(image: UIImage, toRect: CGRect) -> UIImage? {
         var croppedImage: UIImage?
         
         let cgImage = image.cgImage
